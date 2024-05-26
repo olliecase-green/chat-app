@@ -1,4 +1,5 @@
 import express from "express"
+import path from "path"
 import { createServer } from "http"
 import WebSocket, { WebSocketServer } from "ws"
 
@@ -7,10 +8,11 @@ const app = express()
 const server = createServer(app)
 const wss = new WebSocketServer({ server: server })
 
+app.use(express.static(path.join(__dirname, "../public")))
+
 wss.on("connection", function connection(ws) {
   ws.on("error", console.error)
 
-  console.log("A new client connected!")
   ws.send("Connected")
 
   ws.on("message", function message(data, isBinary) {
