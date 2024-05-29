@@ -30,15 +30,21 @@ const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const http_1 = require("http");
 const ws_1 = __importStar(require("ws"));
-const port = 3000;
+const port = 8080;
 const app = (0, express_1.default)();
 const server = (0, http_1.createServer)(app);
-const wss = new ws_1.WebSocketServer({ server: server });
+const wss = new ws_1.WebSocketServer({ server });
+const messageObject = {
+    type: "systemNotification",
+    data: {
+        message: "Connected",
+    },
+    timeStamp: new Date().toISOString(),
+};
 app.use(express_1.default.static(path_1.default.join(__dirname, "../public")));
 wss.on("connection", function connection(ws) {
     ws.on("error", console.error);
-    console.log("A new client connected!");
-    ws.send("Connected");
+    ws.send(JSON.stringify(messageObject));
     ws.on("message", function message(data, isBinary) {
         wss.clients.forEach(function each(client) {
             if (client.readyState === ws_1.default.OPEN) {
@@ -46,9 +52,6 @@ wss.on("connection", function connection(ws) {
             }
         });
     });
-});
-app.get("/", (req, res) => {
-    res.send("Chat app");
 });
 server.listen(port, () => {
     console.log(`Running on port ${port}`);

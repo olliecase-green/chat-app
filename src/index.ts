@@ -3,17 +3,33 @@ import path from "path"
 import { createServer } from "http"
 import WebSocket, { WebSocketServer } from "ws"
 
-const port = 3000
+const port = 8080
 const app = express()
 const server = createServer(app)
-const wss = new WebSocketServer({ server: server })
+const wss = new WebSocketServer({ server })
+
+interface sendItem {
+  type: string
+  data: {
+    [key: string]: string
+  }
+  timeStamp: string
+}
 
 app.use(express.static(path.join(__dirname, "../public")))
 
 wss.on("connection", function connection(ws) {
   ws.on("error", console.error)
 
-  ws.send("Connected")
+  const messageObject: sendItem = {
+    type: "systemNotification",
+    data: {
+      message: "Connected",
+    },
+    timeStamp: new Date().toLocaleTimeString("en-GB").slice(0, 5),
+  }
+
+  ws.send(JSON.stringify(messageObject))
 
   ws.on("message", function message(data, isBinary) {
     wss.clients.forEach(function each(client) {
@@ -22,10 +38,6 @@ wss.on("connection", function connection(ws) {
       }
     })
   })
-})
-
-app.get("/", (req, res) => {
-  res.send("Chat app")
 })
 
 server.listen(port, () => {

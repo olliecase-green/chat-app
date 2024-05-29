@@ -7,7 +7,7 @@
 #message-container {
   border: 1px solid #ccc;
   padding: 10px;
-  margin: 10px 0 10px 0;
+  margin: 10px 0 0 0;
   width: 100%;
   height: 200px;
   overflow-y: auto;
@@ -26,11 +26,23 @@
   border: none;
 }
 
-#send-btn {
+.button {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   border-radius: 0;
   border: none;
-  background: #25d366;
   padding: 8px;
   cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  background: #cccccc2e;
+}
+
+#send-btn {
+  background: #25d366;
+}
+
+.input-container-item {
+  margin: 5px 0 0 0;
 }

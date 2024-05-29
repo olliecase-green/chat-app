@@ -3,24 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chat app</title>
-    <link rel="stylesheet" type="text/css" href="index.css" />
+    <title>WhatsUpp</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
-    <div class="app-container">
-      <h1 class="app-title">Chat app</h1>
-      <div id="message-container"></div>
-      <div class="input-container">
-        <input class="input-box" id="handle" type="text" placeholder="Name" />
-        <input
-          class="input-box"
-          id="message-input"
-          type="text"
-          placeholder="Type a message"
-        />
-        <button id="send-btn">Send</button>
-      </div>
-    </div>
+    <form action="chat.html">
+      <input
+        type="text"
+        name="username"
+        id="username"
+        placeholder="Enter username..."
+        required
+      />
+      <button type="submit">Click to go to app</button>
+    </form>
   </body>
-  <script src="index.js"></script>
 </html>
