@@ -1,3 +1,28 @@
+.index-form {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.index-form button {
+  background: #25d366;
+  cursor: pointer;
+}
+
+.form-item {
+  border-radius: 0;
+  border: none;
+  padding: 8px;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  background: #cccccc2e;
+  margin: 8px 0 0 0;
+}
+
 .app-container {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   width: 500px;
