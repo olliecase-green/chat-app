@@ -25,7 +25,7 @@
 
 .app-container {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  width: 500px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -70,4 +70,16 @@
 
 .input-container-item {
   margin: 5px 0 0 0;
+}
+
+@media screen and (min-width: 480px) {
+  .app-container {
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .app-container {
+    width: 500px;
+  }
 }
