@@ -19,7 +19,7 @@ sendBtn.addEventListener("click", () => {
       username: username,
       message: messageInput,
     },
-    timeStamp: new Date().toLocaleTimeString("en-GB").slice(0, 5),
+    timeStamp: new Date().getTime(),
   }
 
   socket.send(JSON.stringify(messageObject))
@@ -34,10 +34,12 @@ socket.onmessage = (event) => {
 
   switch (type) {
     case "chatMessage":
-      newMessage.textContent = `[${timeStamp}] ${username}: ${message}`
+      newMessage.textContent = `[${formatTime(
+        timeStamp
+      )}] ${username}: ${message}`
       break
     case "systemNotification":
-      newMessage.textContent = `${message} at ${timeStamp}`
+      newMessage.textContent = `${message} at ${formatTime(timeStamp)}`
       break
     default:
       window.alert(`Unknown message type: ${type}. Check console for details.`)
@@ -49,4 +51,8 @@ socket.onmessage = (event) => {
 
 const scrollToBottom = (element) => {
   element.scrollTop = element.scrollHeight
+}
+
+const formatTime = (timeStamp) => {
+  return new Date(timeStamp).toLocaleTimeString().slice(0, 5)
 }

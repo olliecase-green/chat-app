@@ -13,7 +13,7 @@ interface sendItem {
   data: {
     [key: string]: string
   }
-  timeStamp: string
+  timeStamp: number
 }
 
 app.use(express.static(path.join(__dirname, "../public")))
@@ -26,7 +26,7 @@ wss.on("connection", function connection(ws) {
     data: {
       message: "Connected",
     },
-    timeStamp: new Date().toLocaleTimeString("en-GB").slice(0, 5),
+    timeStamp: new Date().getTime(),
   }
 
   ws.send(JSON.stringify(messageObject))
