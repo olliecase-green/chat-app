@@ -9,7 +9,7 @@ const server = createServer(app)
 const wss = new WebSocketServer({ server })
 
 interface sendItem {
-  type: string
+  type: "systemNotification" | "chatMessage"
   data: {
     [key: string]: string
   }

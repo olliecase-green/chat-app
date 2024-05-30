@@ -30,9 +30,9 @@ socket.onmessage = (event) => {
   const newMessage = document.createElement("div")
   const receivedObject = JSON.parse(event.data)
   const { message, username } = receivedObject.data
-  const { timeStamp } = receivedObject
+  const { type, timeStamp } = receivedObject
 
-  switch (receivedObject.type) {
+  switch (type) {
     case "chatMessage":
       newMessage.textContent = `[${timeStamp}] ${username}: ${message}`
       break
@@ -40,8 +40,13 @@ socket.onmessage = (event) => {
       newMessage.textContent = `${message} at ${timeStamp}`
       break
     default:
-      console.warn("Unknown message type:", receivedObject.type)
+      window.alert(`Unknown message type: ${type}. Check console for details.`)
   }
 
   messageContainer.appendChild(newMessage)
+  scrollToBottom(messageContainer)
+}
+
+const scrollToBottom = (element) => {
+  element.scrollTop = element.scrollHeight
 }
