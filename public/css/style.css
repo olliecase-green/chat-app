@@ -15,7 +15,7 @@
   border-radius: 0;
   border: none;
   padding: 8px;
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
   text-decoration: none;
   color: black;
@@ -46,6 +46,7 @@
 
 .input-box {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
   margin: 0;
   padding: 8px;
   border: none;
@@ -57,7 +58,7 @@
   border: none;
   padding: 8px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
   text-decoration: none;
   color: black;
